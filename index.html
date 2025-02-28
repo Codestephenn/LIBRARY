@@ -3,50 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library</title>
+    <title>Modern Library</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <div class="header">
+    <div class="header">
         <h1>My Library</h1>
-        <button id="new-book-btn" onclick="document.getElementById('modal').style.display='block'">NEW BOOK</button>
-  </div>
+        <button id="new-book-btn">NEW BOOK</button>
+    </div>
 
-  <div class="tabs">
-    <button class="tab" data-tab="all">All</button>
-    <button class="tab" data-tab="read">Read</button>
-    <button class="tab" data-tab="unread">Unread</button>
-  </div>
+    <div class="tabs">
+        <button class="tab active" data-tab="all">All</button>
+        <button class="tab" data-tab="read">Read</button>
+        <button class="tab" data-tab="unread">Unread</button>
+    </div>
 
-  <div id="library"></div>
+    <div id="library"></div>
 
-  <div id="modal" class="modal">
-    <form class="modal-content animate" id="bookForm">
-      <div class="container">
-        <label for="title"><b>Title</b></label>
-        <input type="text" placeholder="Enter Title" name="title" required>
+    <div id="modal" class="modal">
+        <form class="modal-content" id="bookForm" novalidate>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" required pattern="[A-Za-z0-9\s]{2,}">
+                <span class="error-message" id="title-error"></span>
+            </div>
 
-        <label for="author"><b>Author</b></label>
-        <input type="text" placeholder="Enter Author" name="author" required>
+            <div class="form-group">
+                <label for="author">Author</label>
+                <input type="text" id="author" name="author" required pattern="[A-Za-z\s]{2,}">
+                <span class="error-message" id="author-error"></span>
+            </div>
 
-        <label for="pages"><b>Pages</b></label>
-        <input type="number" placeholder="Enter Pages" name="pages" required>
+            <div class="form-group">
+                <label for="pages">Pages</label>
+                <input type="number" id="pages" name="pages" required min="1">
+                <span class="error-message" id="pages-error"></span>
+            </div>
 
-        <div class="checkbox-container">
-          <input type="checkbox" name="read" id="read">
-          <label for="read"><b>Read</b></label>
-        </div>
+            <div class="checkbox-container">
+                <input type="checkbox" id="read" name="read">
+                <label for="read">Read</label>
+            </div>
 
-        <button type="submit">Add Book</button>
-      </div>
+            <button type="submit">Add Book</button>
+            <button type="button" class="cancelbtn">Cancel</button>
+        </form>
+    </div>
 
-      <div class="container">
-        <button type="button" onclick="document.getElementById('modal').style.display='none'" class="cancelbtn">Cancel</button>
-      </div>
-    </form>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
